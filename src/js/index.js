@@ -17,8 +17,16 @@ function init(){
 };
 
 function initWithOpenFin(){
-    alert("OpenFin is available");
-    // Your OpenFin specific code to go here...
+    document.querySelector("#new-win").addEventListener("click", function(){
+        var win = new ExternalWindow();
+        console.log("New win created ", win)
+    });
+
+    document.querySelector("#new-app").addEventListener("click", function(){
+        var app = new initNewApp().then(function(app){
+            console.log( "New App Created" );
+        })
+    })
 }
 
 function initNoOpenFin(){
