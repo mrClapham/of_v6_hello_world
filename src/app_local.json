@@ -4,13 +4,14 @@
     "name": "OpenFin appseed",
     "description": "A vanilla appseed for OpenFin applications",
     "url": "http://localhost:9070",
+    "_url": "http://cdn.openfin.co/demos/hyperblotter/index.html",
+    "__url": "about:blank",
     "uuid": "openfin-closing-events-demo",
     "autoShow": true
   },
   "runtime": {
-    "arguments": "",
-    "version": "canary",
-    "version": "stable"
+    "arguments": "--v=1 --enable-logging --debug",
+    "version": "canary"
   },
   "shortcut": {
     "company": "OpenFin",

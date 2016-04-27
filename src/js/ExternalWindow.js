@@ -64,9 +64,10 @@ ExternalWindow = function(){
             console.log("This is ",this);
             _this = this;
             setTimeout(function(){
-                console.log("_________________ ", _this._window.contentWindow.document.querySelector("#title-display"));
+                //console.log("_________________ ", _this._window.contentWindow.document.querySelector("#title-display"));
                 //_this.getNativeWindow().document.querySelector("#title-display").innerHTML ='</H2>'+_window_config.name+'</H2>';
             }, 1000);
+            this.show();
             resolve(this);
         };
         var _onIntFail = function(){
