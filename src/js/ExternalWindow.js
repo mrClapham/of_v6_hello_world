@@ -13,7 +13,7 @@ var _generateRandomName = function(){
 };
 
 
-ExternalWindow = function(){
+ExternalWindow = function(name){
 
     var _window_config = {
         alwaysOnTop: false,
@@ -24,8 +24,8 @@ ExternalWindow = function(){
         },
         defaultCentered:false,
         defaultHeight:300,
-        defaultLeft: (Math.random() * 500),
-        defaultTop:(Math.random() * 500),
+        defaultLeft: 100+ (Math.random() * 500),
+        defaultTop:100+ (Math.random() * 500),
         defaultWidth:400,
         frame:true,
         hideOnClose: false,
@@ -36,7 +36,7 @@ ExternalWindow = function(){
         minHeight: 0,
         minimizable: true,
         minWidth: 0,
-        name:_generateRandomName(),
+        name:name || _generateRandomName(),
         opacity: 1.0,
         resizable: true,
         resizeRegion: {
@@ -57,6 +57,7 @@ ExternalWindow = function(){
     };
 
     var _this = this;
+    console.log("The name of the window is ",name);
 
     return new Promise(function(resolve, reject){
         var _initCallback = function(){
@@ -64,19 +65,22 @@ ExternalWindow = function(){
             console.log("This is ",this);
             _this = this;
             setTimeout(function(){
-                //console.log("_________________ ", _this._window.contentWindow.document.querySelector("#title-display"));
-                //_this.getNativeWindow().document.querySelector("#title-display").innerHTML ='</H2>'+_window_config.name+'</H2>';
-            }, 1000);
+                // console.log("_________________ ",
+                // _this._window.contentWindow.document.querySelector("#title-display"));
+                _this.getNativeWindow().document.querySelector("#title-display").innerHTML ='</H2>'+_window_config.name+'</H2>';
+            }, 10);
             this.show();
             resolve(this);
         };
-        var _onIntFail = function(){
-            console.log("Initialisation failed.")
+        var _onIntFail = function(err){
+            console.log("Initialisation failed.", err);
         };
 
         try{
             fin.desktop.main(function(){
                 _this._window = new fin.desktop.Window(_window_config,_initCallback,_onIntFail);
+                _this._window.show();
+                resolve(_this._window);
             })
         }catch(err){
             console.log("Error: ", err);

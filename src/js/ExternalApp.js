@@ -12,6 +12,8 @@ function initNewApp(uuid){
                 defaultCentered: false,
                 alwaysOnTop: false,
                 saveWindowState: true,
+                defaultWidth:300,
+                defaultHeight:300,
                 icon: "http://localhost:9070/favicon.ico"
             }
         }, function () {

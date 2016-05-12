@@ -11,7 +11,7 @@
   },
   "runtime": {
     "arguments": "--v=1 --enable-logging --debug",
-    "version": "canary"
+    "version": "6.49.11.65"
   },
   "shortcut": {
     "company": "OpenFin",

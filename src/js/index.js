@@ -1,3 +1,6 @@
+var appIdNumber  = 0;
+var winIdNumber  = 0;
+
 document.addEventListener("DOMContentLoaded", function(){
     init();
 });
@@ -18,13 +21,21 @@ function init(){
 
 function initWithOpenFin(){
     document.querySelector("#new-win").addEventListener("click", function(){
-        var win = new ExternalWindow();
-        console.log("New win created ", win)
+        winIdNumber ++;
+        var win = new ExternalWindow("Win_"+winIdNumber).then(function(wn){
+            console.log("The window is ",wn);
+
+            setTimeout(function(){
+                wn.show();
+            }, 500);
+        });
     });
 
     document.querySelector("#new-app").addEventListener("click", function(){
-        var app = new initNewApp().then(function(app){
-            console.log( "New App Created" );
+        var app = new initNewApp("App_"+appIdNumber).then(function(app){
+
+            appIdNumber ++;
+            console.log( "New App Created - appIdNumber: "+appIdNumber );
         })
     })
 }
