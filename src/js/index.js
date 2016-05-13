@@ -27,7 +27,7 @@ function initWithOpenFin(){
 
             setTimeout(function(){
                 wn.show();
-            }, 500);
+            }, 1000);
         });
     });
 
