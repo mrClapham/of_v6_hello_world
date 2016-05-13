@@ -24,10 +24,6 @@ function initWithOpenFin(){
         winIdNumber ++;
         var win = new ExternalWindow("Win_"+winIdNumber).then(function(wn){
             console.log("The window is ",wn);
-
-            setTimeout(function(){
-                wn.show();
-            }, 1000);
         });
     });
 

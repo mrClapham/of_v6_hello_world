@@ -64,8 +64,7 @@ ExternalWindow = function(name){
             console.log("This is the success call back function");
             console.log("This is ",this);
             _this = this;
-
-            this.show();
+            _this.getNativeWindow().document.querySelector("#title-display").innerHTML ='</H2>'+_window_config.name+'</H2>';
             resolve(this);
         };
         var _onIntFail = function(err){
@@ -75,19 +74,11 @@ ExternalWindow = function(name){
         try{
             fin.desktop.main(function(){
                 _this._window = new fin.desktop.Window(_window_config,_initCallback,_onIntFail);
-                _this._window.show();
-
-                setTimeout(function(){
-                    _this._window.getNativeWindow().document.querySelector("#title-display").innerHTML ='</H2>'+_window_config.name+'</H2>';
-                }, 1600);
-
-
                 resolve(_this._window);
             })
         }catch(err){
             console.log("Error: ", err);
             reject(err)
         }
-
     });
 };
